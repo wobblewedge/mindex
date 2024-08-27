@@ -1,14 +1,29 @@
 package com.mindex.challenge.data;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+//Put was overwriting existing entities, so I added this and the Id annotation.
+@Document
 public class Employee {
+    @Id
     private String employeeId;
     private String firstName;
     private String lastName;
     private String position;
     private String department;
+    private Compensation compensation;
     private List<Employee> directReports;
+
+    public Compensation getCompensation() {
+        return compensation;
+    }
+
+    public void setCompensation(Compensation compensation) {
+        this.compensation = compensation;
+    }
 
     public Employee() {
     }
